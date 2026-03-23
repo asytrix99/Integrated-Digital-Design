@@ -5,6 +5,7 @@ input_a,
 input_b, 
 output_c 
 ); 
+
 input CLK; 
 input RESETN;     ////  reset disable 
 input [7:0] input_a;   ////  fp8 operand 
@@ -14,33 +15,33 @@ reg [7:0] operand_a;  ////  bigger operand
 reg [7:0] operand_b;  ////  smaller operand 
 reg [7:0] input_a_reg; 
 reg [7:0] input_b_reg; 
+
 ////////*  stage 1 (simply register raw inputs a, b)  *//////// 
 always @ (posedge CLK or negedge RESETN) begin 
-if (!RESETN) begin 
-input_a_reg <= 8'b0; 
-input_b_reg <= 8'b0; 
-end else begin 
-input_a_reg <= input_a; 
-input_b_reg <= input_b; 
-end 
-end 
+  if (!RESETN) begin 
+    input_a_reg <= 8'b0; 
+    input_b_reg <= 8'b0; 
+  end else begin 
+    input_a_reg <= input_a; 
+    input_b_reg <= input_b; 
+  end 
+end
+
 ////////*  stage 2 (swap)  *//////// 
 always @ (posedge CLK or negedge RESETN) begin 
 //// fill in your code//// 
-if (!RESETN) begin 
-operand_a <= 8'b0; 
-operand_b <= 8'b0;   
-end else begin 
-if (input_a_reg[6:3] >= input_b_reg[6:3]) begin 
-operand_a <= input_a_reg; 
-30 
+  if (!RESETN) begin 
+    operand_a <= 8'b0; 
+    operand_b <= 8'b0;   
+  end else begin 
+    if (input_a_reg[6:3] >= input_b_reg[6:3]) begin 
+      operand_a <= input_a_reg; 
       operand_b <= input_b_reg; 
     end else begin 
       operand_a <= input_b_reg; 
       operand_b <= input_a_reg; 
     end 
   end 
- 
 end 
  
 reg [3:0] exp_diff_reg; 
@@ -84,13 +85,14 @@ end
 reg [7:0] sync_result; //// sychronized final result 
  
 ////////*  sync output (additional cycle for stability)  *//////// 
-31 
 always @ (posedge CLK or negedge RESETN) begin 
-if (!RESETN) begin 
-sync_result <= 8'b0; 
-end else begin 
-sync_result <= output_s2; 
+  if (!RESETN) begin 
+    sync_result <= 8'b0; 
+  end else begin 
+    sync_result <= output_s2; 
+  end 
 end 
-end 
+
 assign output_c = sync_result; 
+
 endmodule

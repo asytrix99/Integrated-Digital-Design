@@ -41,7 +41,7 @@ end
  
 //// exp_diff is the substraction of two operand 
 // obtain positive exp_diff 
-3 
+
 wire [3:0] exp_diff = operand_a[6:3] - operand_b[6:3]; 
  
 //// shifted_mas is the mantissa shifted by exp_diff 

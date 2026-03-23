@@ -45,7 +45,7 @@ end
  
 //// mas_add_result is addition result of two mantissa 
 // include extra bit to consider for potential carry out 
-14 
+
 wire [4:0] mas_add_result = {1'b1, operand_a[2:0]} + shifted_mas_reg; 
  
  

@@ -4,7 +4,6 @@ RESETN,
 input_a, 
 input_b, 
 output_c 
-21 
 ); 
  
  
@@ -54,8 +53,7 @@ always @ (posedge CLK or negedge RESETN) begin
     operand_a_s2 <= operand_a; 
   end 
 end 
- 
-22 
+  
 //// mas_add_result is addition result of two mantissa 
 // include extra bit to consider for potential carry out 
 wire [4:0] mas_add_result = {1'b1, operand_a_s2[2:0]} + shifted_mas_reg; 

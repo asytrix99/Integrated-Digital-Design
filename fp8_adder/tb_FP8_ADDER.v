@@ -9,7 +9,6 @@ integer i;
 integer j;
 integer num_of_error;
 
-//// do touch below ////
 reg [0:0]		clk;
 reg [0:0] 		cs;
 reg [0:0]		we;
@@ -26,7 +25,6 @@ initial begin
 	$readmemb("ref/SRAM_DATA0.txt", SRAMBANKA0.memory);
 	$readmemb("ref/output_ans.txt", output_bits_reference);
 end
-////do touch above ////
 
 wire [7:0] input_0; 	//// first fp8 operand
 wire [7:0] input_1; 	//// second fp8 operand
@@ -38,7 +36,6 @@ reg [0:0] RESETN;	//// reset disable
 assign input_0 = dout[7:0];
 assign input_1 = dout[15:8];
 
-
 //// instantiate your ADDER here ////
 FP8_ADDER u_adder (
 	.CLK (clk),
@@ -48,11 +45,6 @@ FP8_ADDER u_adder (
 	.output_c (c)
 );
 
-
-
-
-
-//// do touch below ////
 initial begin
 $vcdplusfile("waveform.vpd");
 $vcdpluson();
@@ -95,7 +87,5 @@ if (num_of_error == 0) begin
 $vcdplusoff();
 $finish;
 end
-
-
 
 endmodule

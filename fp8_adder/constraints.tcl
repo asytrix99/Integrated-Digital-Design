@@ -19,8 +19,7 @@ set_output_delay -max 0.2 -clock CLK [get_ports {output_c}]
 set_max_capacitance 0.005 [get_ports {output_c}] 
  
 #set output load - inverter with 4X strength 
-set_driving_cell -lib_cell INVX4_RVT -library saed32rvt_tt1p05v125c [get_ports {input_a input_b 
-RESETN}] 
+set_driving_cell -lib_cell INVX4_RVT -library saed32rvt_tt1p05v125c [get_ports {input_a input_b RESETN}] 
  
 #set max area (no constraints) 
 set_max_area 0
