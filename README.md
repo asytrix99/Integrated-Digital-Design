@@ -1,12 +1,13 @@
 # FP8 Adder Design & CMOS Characterization (EE4415)
-# [Project Link](https://docs.google.com/document/d/1Iqqsh-52q-gNjQFsKYfF-DmyKTG7gHlCscdHGcIPiLc/edit?tab=t.0#heading=h.qdf1624piuu4)
+# [FP8 Adder Design: Project Link](https://docs.google.com/document/d/1j5Em5DMRkhHdtFFg1FSJavrnN78bd-we7Lo8ZnCGIF4/edit?tab=t.0#heading=h.10pd3q3lqsui)
+# [CMOS Characterization: Project Link](https://docs.google.com/document/d/1Iqqsh-52q-gNjQFsKYfF-DmyKTG7gHlCscdHGcIPiLc/edit?tab=t.0)
 
 ## Overview
 This project explores both **digital IC design** and **analog CMOS characterization** through:
 1. A pipelined FP8 (E4M3) floating-point adder
 2. Transistor- and circuit-level simulations using Cadence Virtuoso
 
-The goal is to understand **performance trade-offs across abstraction levels** — from MOSFET physics to RTL architecture.
+The goal is to understand **performance trade-offs across abstraction levels** - from MOSFET physics to RTL architecture.
 
 ---
 
@@ -35,7 +36,7 @@ Designed a low-precision FP8 adder based on the E4M3 format:
 
 ### Synthesis
 - Timing constraints applied (1.5 ns clock)
-- Explored timing closure by reducing clock period
+- Explored timing closure by reducing the clock period
 - Identified **critical paths and bottlenecks**
 - Evaluated:
   - Throughput improvement
@@ -50,12 +51,11 @@ Designed a low-precision FP8 adder based on the E4M3 format:
 ---
 
 ## Cadence Virtuoso (Analog IC)
-# [Project Link](https://docs.google.com/document/d/1Iqqsh-52q-gNjQFsKYfF-DmyKTG7gHlCscdHGcIPiLc/edit?tab=t.0)
 
 ### MOSFET Characterization
 - Simulated NMOS and PMOS (W = 1µm, L = 50nm)
 - Plotted ID–VDS characteristics across multiple VDD
-- Determined effective ON resistance using two-endpoint method
+- Determined effective ON resistance using the two-endpoint method
 - Analyzed short-channel behavior
 
 ### CMOS Inverter Design
