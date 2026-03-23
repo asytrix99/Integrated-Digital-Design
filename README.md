@@ -47,7 +47,6 @@ Designed a low-precision FP8 adder based on the E4M3 format:
 - `tb_FP8_ADDER.v` - sample testbench (for 3-stage)
 - `constraints.tcl` – constraints file
 - `run.tcl` - run script
-- 
 ---
 
 ## Cadence Virtuoso (Analog IC)
