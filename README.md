@@ -1,11 +1,13 @@
 # FP8 Adder Design & CMOS Characterization (EE4415)
 # [FP8 Adder Design: Project Link](https://docs.google.com/document/d/1j5Em5DMRkhHdtFFg1FSJavrnN78bd-we7Lo8ZnCGIF4/edit?tab=t.0#heading=h.10pd3q3lqsui)
 # [CMOS Characterization: Project Link](https://docs.google.com/document/d/1Iqqsh-52q-gNjQFsKYfF-DmyKTG7gHlCscdHGcIPiLc/edit?tab=t.0)
+# [6T SRAM Bitcell Analysis: Project Link](https://docs.google.com/document/d/1Nurh1H6hgguYYYuR4lYYvtk0-4Kf5-wo9NFIXETXrC4/edit?tab=t.0)
 
 ## Overview
 This project explores both **digital IC design** and **analog CMOS characterization** through:
 1. A pipelined FP8 (E4M3) floating-point adder
 2. Transistor- and circuit-level simulations using Cadence Virtuoso
+3. 6T SRAM bitcell analysis using Cadence Virtuoso
 
 The goal is to understand **performance trade-offs across abstraction levels** - from MOSFET physics to RTL architecture.
 
@@ -97,3 +99,32 @@ Designed a low-precision FP8 adder based on the E4M3 format:
 ## Notes
 - Simulation netlists and outputs from Cadence Virtuoso are included in the report appendix
 - FreePDK45 models were used for all simulations
+
+## SRAM Bitcell Analysis
+
+### Setup
+Designed and simulated a 6T SRAM cell using FreePDK45 (Cadence Virtuoso)
+- Transistor sizing:
+- Pull-up (PMOS): 200 nm
+- Pull-down (NMOS): 400 nm
+- Access (NMOS): 200 nm
+- Supply voltage: VDD = 1.2 V
+- Static Noise Margin (SNM) Analysis
+
+Performed DC sweep simulations to generate butterfly curves for different operating modes:
+- Hold SNM
+Condition: VWL = 0, BL = BLB = VDD
+- Read SNM
+Condition: VWL = VDD, BL = BLB = VDD
+- Write SNM
+Condition: BL = VDD, BLB = 0
+
+Methodology:
+-Plotted VQB vs VQ characteristics for both cross-coupled inverters
+-Extracted SNM by fitting the largest square within the butterfly curve
+-Compared stability across operating conditions
+
+### Key Observations
+- Hold SNM > Read SNM > Write SNM
+- Read operation reduces stability due to access transistor contention
+- Write margin is limited by the ability to flip the cross-coupled inverter state
